@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-In Form</title>
+    <link rel="stylesheet" type="text/css" href="css/formstyle.css">
+</head>
+<body>
+    <div class="top-bar">
+        <p>Download The Rapf pare App: <a href="#">Explore Now</a></p>
+    </div>
+    <header>
+        <div class="header">
+            <div class="logo"><img src='images/womenog/logo.png' alt='logo' width="150px"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="menindex.html">MEN</a></li>
+                <li><a href="womenindex.html">WOMEN</a></li>               
+                <li><a href="homeindex.html">HOME</a></li>
+                <li><a href="formindex.html">CONTACT US</a></li>
+                <li><a href="index.html">MAIN</a></li>
+            </ul>
+        </nav>
+        <div id="accordion">
+            <button class="accordion-button" onclick="toggleAccordion()"><img src='images/list-ul-alt-svgrepo-com.svg' width=50px"></button>
+            <div class="accordion-content" id="accordionContent">
+                <ul>
+                    <li><a href="menindex.html">MEN</a></li>
+                    <li><a href="womenindex.html">WOMEN</a></li>               
+                    <li><a href="homeindex.html">HOME</a></li>
+                    <li><a href="formindex.html">CONTACT US</a></li>
+                    <li><a href="index.html">MAIN</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </header>  
+
+    <div class="form-container">
+        <div class="login-box">
+            <h2>Sign in</h2>
+            <form>
+                <label for="email">*EMAIL ADDRESS</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                
+                <label for="password">*PASSWORD</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                
+                <div class="options">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <span class="required">*Required</span>
+                </div>
+
+                <button type="submit">SIGN IN</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function toggleAccordion() {
+            var content = document.getElementById("accordionContent");
+            if (content.style.display === "block") {
+                content.style.display = "none"; 
+            } else {
+                content.style.display = "block"; 
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
