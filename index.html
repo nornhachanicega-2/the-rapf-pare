@@ -4,7 +4,420 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Rapf Pare</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css?force=1">
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(26, 11, 75);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ========== TOP BAR ========== */
+        .top-bar {
+            background-color: #E6A8D7;
+            width: 100%;
+            color: rgb(14, 45, 109);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 16px;
+        }
+        .top-bar a {
+            color: #f9ff50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .top-bar p {
+            color: rgb(26, 11, 75);
+            margin: 0;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            gap: 120px;
+            width: 100%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #E6A8D7;
+            padding-right: 0;
+            flex-shrink: 0;
+        }
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #E6A8D7;
+            font-size: 1.2rem;
+        }
+        nav ul li a:hover {
+            color: #00ffee;
+        }
+
+        /* ========== ACCORDION (MOBILE) ========== */
+        #accordion {
+            display: none;
+        }
+        .accordion-button {
+            width: 100%;
+            background-color: rgb(26, 11, 75);
+            border: none;
+            cursor: pointer;
+            text-align: right;
+        }
+        .accordion-content {
+            display: none;
+            background-color: rgb(26, 11, 75);
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .accordion-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .accordion-content li a {
+            text-decoration: none;
+            color: #E6A8D7;
+            display: block;
+            padding: 5px 0;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 95%;
+            max-width: 1200px;
+            margin: -10px auto 0;
+            padding: 10px;
+        }
+        .hero img {
+            width: 100%;
+            height: 90%;
+            display: block;
+            object-fit: cover;
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #E6A8D7;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            text-align: center;
+            pointer-events: none;
+        }
+        .hero:hover .hero-text {
+            opacity: 1;
+        }
+        .hero-text p {
+            font-size: 2rem;
+            margin: 0;
+            transform: translateY(20px);
+            transition: transform 0.25s;
+        }
+        .hero-text:hover p {
+            transform: translateY(0);
+        }
+
+        /* ========== SHOP CATEGORIES ========== */
+        .shop-categories {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .shop-categories h2 {
+            color: #E6A8D7;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 70px;
+            padding-top: 10px;
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .category {
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+            flex: 1 1 200px;
+            max-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 15px;
+        }
+        .category:hover {
+            transform: scale(1.05);
+        }
+        .category img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        .category a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #E6A8D7;
+            font-size: 1.1em;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 20px;
+            margin-top: -50px;
+        }
+        .about-content {
+            display: flex;
+            max-width: 1000px;
+            gap: 90px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 40px;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+        .about-images {
+            position: relative;
+            width: 50%;
+            min-width: 300px;
+        }
+        .main-img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .overlay-img {
+            position: absolute;
+            border-radius: 10px;
+            width: 30%;
+        }
+        .face {
+            width: 40%;
+            bottom: 10px;
+            left: 10px;
+        }
+        .cote {
+            width: 30%;
+            top: 10px;
+            right: 10px;
+        }
+        .overlay-img:hover {
+            transform: scale(1.2);
+        }
+        .about-text {
+            width: 45%;
+            min-width: 280px;
+            color: #E6A8D7;
+        }
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .contact-link {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #00ffee;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: rgb(26, 11, 75);
+            padding: 40px 20px;
+            border-top: 1px solid #E6A8D7;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-column {
+            flex: 1 1 200px;
+            padding: 10px;
+        }
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #E6A8D7;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #E6A8D7;
+            font-size: 14px;
+        }
+        .footer-bottom {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #E6A8D7;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-bottom .left,
+        .footer-bottom .center,
+        .footer-bottom .right {
+            flex: 1 1 200px;
+            text-align: center;
+        }
+        .footer-bottom .left {
+            text-align: left;
+        }
+        .footer-bottom .right {
+            text-align: right;
+        }
+        .footer-bottom a {
+            text-decoration: none;
+            color: #E6A8D7;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        .email-signup a {
+            color: rgb(108, 201, 230);
+        }
+
+        /* ========== MEDIA QUERIES ========== */
+        @media screen and (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .hero-text p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                gap: 40px;
+            }
+            nav ul {
+                gap: 15px;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            .about-images, .about-text {
+                width: 100%;
+            }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-bottom .left,
+            .footer-bottom .right {
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            nav ul {
+                display: none;
+            }
+            #accordion {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .category {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -12,8 +425,8 @@
     </div>
     
     <header>
-        <div class="header">
-            <div class="logo"><img src='images/womenog/logo.png' alt='logo' width="150px"></div>
+        <div class="logo">
+            <img src='images/womenog/logo.png' alt='logo' width="150px">
         </div>
         <nav>
             <ul>
@@ -25,7 +438,9 @@
             </ul>
         </nav>
         <div id="accordion">
-            <button class="accordion-button" onclick="toggleAccordion()"><img src='images/list-ul-alt-svgrepo-com.svg' width=50px"></button>
+            <button class="accordion-button" onclick="toggleAccordion()">
+                <img src='images/list-ul-alt-svgrepo-com.svg' width="50px" alt="menu">
+            </button>
             <div class="accordion-content" id="accordionContent">
                 <ul>
                     <li><a href="menindex.html">MEN</a></li>
@@ -36,149 +451,131 @@
                 </ul>
             </div>
         </div>
-
     </header>    
     
     <div class="hero">
-        <img src="images/womenog/download (2).jpeg" alt="Fashion Model" class="image">
-        <img src="images/aes winter/download (8).jpeg" alt="Winter Collection"class="image">
-        <img src="images/shoes/download (4).jpeg" alt="High Heels"class="image">
-
+        <img src="images/womenog/download (2).jpeg" alt="Fashion Model">
+        <img src="images/aes winter/download (8).jpeg" alt="Winter Collection">
+        <img src="images/shoes/download (4).jpeg" alt="High Heels">
         <div class="hero-text">
             <p><strong>New Winter Collection</strong><br>Classic Winter Fits</p>
         </div>
     </div>
    
-    
     <section class="shop-categories">
         <h2>Shop Categories</h2>
         <div class="categories">
             <div class="category"> 
-                <a href="constumeindex.html">  <img class='image'src="images/womenog/download (5).jpeg"> Winter Couture</a>
+                <a href="constumeindex.html">  
+                    <img src="images/womenog/download (5).jpeg" alt="Winter Couture"> Winter Couture
+                </a>
             </div>
             <div class="category">
-                <a href="purseindex.html">  <img class='image'src="images/purse/The Most Iconic Chanel Bags of All Time.jpeg" >Accessories</a>
+                <a href="purseindex.html">  
+                    <img src="images/purse/The Most Iconic Chanel Bags of All Time.jpeg" alt="Accessories"> Accessories
+                </a>
             </div>
             <div class="category">
-                <a href="demureindex.html"><img class='image'src="images/womenog/download (3).jpeg" >Demure</a>
+                <a href="demureindex.html">
+                    <img src="images/womenog/download (3).jpeg" alt="Demure"> Demure
+                </a>
             </div>
             <div class="category">
-                <a href="accessoriesindex.html "> <img class='image'src="images/jewerly/Satine Ring Pack Gold.jpeg" >Jewelry And Aesthetic</a>
+                <a href="accessoriesindex.html"> 
+                    <img src="images/jewerly/Satine Ring Pack Gold.jpeg" alt="Jewelry"> Jewelry And Aesthetic
+                </a>
             </div>
         </div>
     </section> 
-    <section> 
-        <section class="about-section">
-            <div class="about-content">
-                <div class="about-images">
-                    <img src="images/about/a1dc9ba6-b5cc-40b8-bf60-1ca073eefa93.jpeg" alt="Fashion Model" class="main-img">
-                    <img src="images/about/23631de7-7aea-42b3-b7d6-a15fb6e645dd.jpeg" alt="Model Closeup" class="overlay-img face">
-                    <img src="images/about/e0902995-5db9-47ef-98bd-b31794f24a30.jpeg" alt="cote Closeup" class="overlay-img cote ">
-                </div>
-    
-                <div class="about-text">
-                    <h2>ABOUT US</h2>
-                    <p>
-                        Welcome to our boutique clothing brand, where fashion meets individuality.
-                        we update you the latest <br> trends of clothes you can also post so that everyone can see it
-        
-                    </p>
-                    <a href="formindex.html" class="contact-link">CONTACT US</a>
-                </div>
-            </div>  
-        </section>
+
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-images">
+                <img src="images/about/a1dc9ba6-b5cc-40b8-bf60-1ca073eefa93.jpeg" alt="Fashion Model" class="main-img">
+                <img src="images/about/23631de7-7aea-42b3-b7d6-a15fb6e645dd.jpeg" alt="Model Closeup" class="overlay-img face">
+                <img src="images/about/e0902995-5db9-47ef-98bd-b31794f24a30.jpeg" alt="cote Closeup" class="overlay-img cote">
+            </div>
+            <div class="about-text">
+                <h2>ABOUT US</h2>
+                <p>
+                    Welcome to our boutique clothing brand, where fashion meets individuality.
+                    we update you the latest trends of clothes you can also post so that everyone can see it
+                </p>
+                <a href="formindex.html" class="contact-link">CONTACT US</a>
+            </div>
+        </div>  
     </section>
     
-    
     <footer>
-        <footer>
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h4>CUSTOMER SERVICE</h4>
-                    <ul>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Live Chat</a></li>
-                        <li><a href="#">Customer Support</a></li>
-                        <li><a href="#">Shipping & Delivery</a></li>
-                        <li><a href="#">Returns & Exchanges Policy</a></li>
-                        <li><a href="#">Start a Free Return or Exchange</a></li>
-                        <li><a href="#">Check Order Status</a></li>
-                        <li><a href="#">Gift Cards</a></li>
-                    </ul>
-                </div>
-    
-                <div class="footer-column">
-                    <h4>COMPANY</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">World of RL</a></li>
-                        <li><a href="#">Protecting Our Brands</a></li>
-                        <li><a href="#">Global Citizenship & Sustainability</a></li>
-                        <li><a href="#">Commitment to Racial Equity</a></li>
-                        <li><a href="#">Satisfaction Guarantee</a></li>
-                    </ul>
-                </div>
-    
-                <div class="footer-column">
-                    <h4>MORE FROM RP</h4>
-                    <ul>
-                        <li><a href="#">Personalize Your Experience</a></li>
-                        <li><a href="#">Find a Store</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="#">Mobile Marketing</a></li>
-                        <li><a href="#">Book an appointment</a></li>
-                    </ul>
-                </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>CUSTOMER SERVICE</h4>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Live Chat</a></li>
+                    <li><a href="#">Customer Support</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Exchanges Policy</a></li>
+                    <li><a href="#">Start a Free Return or Exchange</a></li>
+                    <li><a href="#">Check Order Status</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
             </div>
-
-            <div class="footer-bottom">
-                <div class="left">
-                    <div class=" email-signup">
-                        <p>
-                            <a href="formindex.html">Click here</a> to add your own collection ar Rapf Pare.</a>.
-                        </p>
-                    </div>
-                    <p>&copy; 2025 The Pare. All rights reserved.</p>
-                </div>
-    
-                <div class="center">
-                   <div class="logo">Rapf Pare</div>
-                </div>
-    
-                <div class="right">
-                    <a href="#">Sitemap</a>
-                    <a href="#">Legal & Privacy</a>
-                    <a href="#">Cookies</a>
-                </div>
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">World of RL</a></li>
+                    <li><a href="#">Protecting Our Brands</a></li>
+                    <li><a href="#">Global Citizenship & Sustainability</a></li>
+                    <li><a href="#">Commitment to Racial Equity</a></li>
+                    <li><a href="#">Satisfaction Guarantee</a></li>
+                </ul>
             </div>
+            <div class="footer-column">
+                <h4>MORE FROM RP</h4>
+                <ul>
+                    <li><a href="#">Personalize Your Experience</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Mobile Marketing</a></li>
+                    <li><a href="#">Book an appointment</a></li>
+                </ul>
+            </div>
+        </div>
 
-        
+        <div class="footer-bottom">
+            <div class="left">
+                <div class="email-signup">
+                    <p><a href="formindex.html">Click here</a> to add your own collection at Rapf Pare.</p>
+                </div>
+                <p>&copy; 2025 The Pare. All rights reserved.</p>
+            </div>
+            <div class="center">
+                <div class="logo">Rapf Pare</div>
+            </div>
+            <div class="right">
+                <a href="#">Sitemap</a>
+                <a href="#">Legal & Privacy</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
     </footer>
 
     <script>
-  // Fix for Render CSS MIME type bug
-  if (window.location.pathname.includes('.html')) {
-    // Reload with correct path if needed
-    console.log('CSS fix applied');
-  }
-  
-  // Force reload CSS if styles aren't loading
-  document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-    link.href = link.href.split('?')[0] + '?v=' + Date.now();
-  });
         function toggleAccordion() {
             var content = document.getElementById("accordionContent");
             if (content.style.display === "block") {
                 content.style.display = "none";
             } else {
-                content.style.display = "block"
+                content.style.display = "block";
             }
         }
     </script>
-
 </body>
 </html>
+
 
 
 
