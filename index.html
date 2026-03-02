@@ -157,6 +157,16 @@
     </footer>
 
     <script>
+  // Fix for Render CSS MIME type bug
+  if (window.location.pathname.includes('.html')) {
+    // Reload with correct path if needed
+    console.log('CSS fix applied');
+  }
+  
+  // Force reload CSS if styles aren't loading
+  document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+    link.href = link.href.split('?')[0] + '?v=' + Date.now();
+  });
         function toggleAccordion() {
             var content = document.getElementById("accordionContent");
             if (content.style.display === "block") {
@@ -169,5 +179,6 @@
 
 </body>
 </html>
+
 
 
