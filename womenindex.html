@@ -3,8 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOMEN</title>
-    <link rel="stylesheet" type="text/css" href="css/womenstyle.css">
+    <title>WOMEN - The Rapf Pare</title>
+    <style>
+        /* ========== BASE & RESET ========== */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(26, 11, 75);
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* ========== TOP BAR ========== */
+        .top-bar {
+            background-color: #E6A8D7;
+            width: 100%;
+            color: rgb(14, 45, 109);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            padding: 10px 0;
+        }
+        .top-bar a {
+            color: #f9ff50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .top-bar p {
+            color: rgb(26, 11, 75);
+            margin: 0;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 120px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;          /* was 200px – fixed */
+            font-weight: 700;
+            color: #E6A8D7;
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(26, 11, 75);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #E6A8D7;
+            font-size: 1.2rem;
+        }
+        nav ul li a:hover {
+            color: #00ffee;
+        }
+
+        /* ========== ACCORDION (MOBILE) ========== */
+        #accordion {
+            display: none;
+        }
+        .accordion-button {
+            width: 100%;
+            background-color: rgb(26, 11, 75);
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        .accordion-content {
+            display: none;
+            background-color: rgb(26, 11, 75);
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .accordion-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .accordion-content li a {
+            text-decoration: none;
+            color: #E6A8D7;
+            display: block;
+            padding: 5px 0;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+        .pin {
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        .pin img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .pin img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ========== MEDIA QUERIES ========== */
+        @media (max-width: 1024px) {
+            #accordion {
+                display: none;
+            }
+        }
+
+        @media (max-width: 920px) {
+            nav ul {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-bar {
+                width: 80%;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1a0a41;
+                text-align: center;
+                padding: 10px 0;
+                flex-wrap: wrap;
+            }
+            .nav a {
+                display: block;
+                padding: 10px;
+            }
+            .top-bar {
+                font-size: 14px;
+                padding: 8px;
+                text-align: center;
+                flex-wrap: wrap;
+            }
+            .image-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                display: flex;
+                gap: 10px;
+                text-align: center;
+            }
+            .logo {
+                text-align: center;
+                margin-bottom: 10px;
+                padding-right: 0;
+                font-size: 24px;
+            }
+            .logo img {
+                max-width: 120px;
+            }
+            nav, .logo {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #accordion {
+                display: flex;
+                flex-direction: column;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar {
+                font-size: 14px;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text p {
+                font-size: 18px;
+            }
+            .image-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            #accordion {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -24,7 +271,9 @@
             </ul>
         </nav>
         <div id="accordion">
-            <button class="accordion-button" onclick="toggleAccordion()"><img src='images/list-ul-alt-svgrepo-com.svg' width=50px"></button>
+            <button class="accordion-button" onclick="toggleAccordion()">
+                <img src='images/list-ul-alt-svgrepo-com.svg' width="50px" alt="menu">
+            </button>
             <div class="accordion-content" id="accordionContent">
                 <ul>
                     <li><a href="menindex.html">MEN</a></li>
@@ -35,66 +284,67 @@
                 </ul>
             </div>
         </div>
-
     </header>  
+
     <main class="gallery">
-        <div class="pin"><img src="images/womenog/0a1c61d4-9eab-4094-bd14-75ac75866168.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/° •                            Old Money, Luxury….jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/0d240396-e8ce-4d84-aa27-8e0336758c86.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/3e9a95bd-0e9f-4089-9d3d-3344a6b3133f.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/4d3acd17-0a7c-41c4-ac62-6c18690e5438.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/5c9c0a03-d791-44d8-abc5-22341fa51921.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/5f3a986b-3a6b-41f1-aef8-3fcfeccd4fe1.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/7af7796d-6718-483b-9d3c-3d4c4c594963.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/7eacd2ae-24ef-4a46-bd62-b56281e247d3.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/19c2cf5e-903a-4059-b964-fc0aa19494c0.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/20d5c355-6035-4604-8082-c9c42e79af83.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/23df24d9-3d2a-4f2c-b8a9-0fd1ee01d66d.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/30+ Old Money Winter Outfits for Timeless Elegance.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/30+ Old Money Winter Outfits You Can't Get Around this Year 98.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/257b4257-bf82-4d2b-ba3d-2a39ec343462.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/6989edcf-e040-47dd-84ed-0ce350e40562.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/34635b16-f63f-4000-8022-61aa3030c5eb.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/555124cf-a85d-4ea8-83e8-9ad8c95c87f5.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/682806b0-2ac6-4bbd-a4de-5356295db4f1.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/6414424c-40ca-4b4f-8b82-47ac45e245e9.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/78599291-ebbc-482a-9602-3e1376dc55e4.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/ae58fe29-dab1-4aa8-b8ec-3e67af35abb0.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/b4ce897f-bc5f-4aa3-8700-8817aa9d4397.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/b4102424-fd8c-4651-b5fa-57075025fc58.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Best Fashion Styles (1).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/black dress_.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/BOTTOMS.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Classy Old Money Outfit - 2.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/d4cbd4e1-83c0-4389-9db7-1b163657ca27.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/d7923b44-d6e3-463e-a1fa-70a35995ce18.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/DericaNicole's Amazon Page.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/download (1).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/download (2).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/download (3).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/download (5).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/download (10).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/download (11).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/e3d6972b-d445-4174-955d-2cd45ff4ea70.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/e4f97d94-5a61-49d5-9331-5a19172ba445.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Faux Leather Tie Front Crossed Button Jacket.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/fec55a8c-e083-4350-a5c8-89fac6ec1079.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Female Old Money Winter Fashion_ 20+ Pieces Woman Needs 12.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Hilary banks aesthetic.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/How to Achieve the Quiet Luxury Look on a Budget em 2024 _ Looks elegantes, Moda, Looks estilosos.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Inspired Elegant Outfit.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Liopard dress _ Dark Feminine Energy_ Bold & Elegant Fashion for a Mysterious, Confident Look.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Marisol Off Shoulder Boucle Maxi Dress - Ivory.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/old money aesthetic outfit ideas.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Old Money Aesthetic_ How To Dress Like The Rich On A Budget.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/outfit inspo (1).jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/𝓹𝓲𝓷_ 𝓮𝓵𝓬𝓱𝓸𝓬𝓸𝓵𝓪𝓽𝓮𝓰𝓲𝓻𝓵 🤎.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Sofia Richie's Off-The-Shoulder Suiting Proves Workwear Can Be Sexy.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/styleinspo black women lifestyle hypergamy spoiled….jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Winter outfit idea.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/Work outfit inspo.jpeg" alt="Pin 3"></div>
-        <div class="pin"><img src="images/womenog/𐙚 𝒫𝒾𝓃𝓉ℯ𝓇ℯ𝓈𝓉 @𝓉𝓇𝒾𝓃𝒾𝒸𝒾𝒶𝓍𝓂𝒶𝓇𝒾ℯ 𐙚.jpeg" alt="Pin 3"></div>
+        <div class="pin"><img src="images/womenog/0a1c61d4-9eab-4094-bd14-75ac75866168.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/° •                            Old Money, Luxury….jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/0d240396-e8ce-4d84-aa27-8e0336758c86.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/3e9a95bd-0e9f-4089-9d3d-3344a6b3133f.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/4d3acd17-0a7c-41c4-ac62-6c18690e5438.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/5c9c0a03-d791-44d8-abc5-22341fa51921.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/5f3a986b-3a6b-41f1-aef8-3fcfeccd4fe1.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/7af7796d-6718-483b-9d3c-3d4c4c594963.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/7eacd2ae-24ef-4a46-bd62-b56281e247d3.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/19c2cf5e-903a-4059-b964-fc0aa19494c0.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/20d5c355-6035-4604-8082-c9c42e79af83.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/23df24d9-3d2a-4f2c-b8a9-0fd1ee01d66d.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/30+ Old Money Winter Outfits for Timeless Elegance.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/30+ Old Money Winter Outfits You Can't Get Around this Year 98.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/257b4257-bf82-4d2b-ba3d-2a39ec343462.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/6989edcf-e040-47dd-84ed-0ce350e40562.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/34635b16-f63f-4000-8022-61aa3030c5eb.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/555124cf-a85d-4ea8-83e8-9ad8c95c87f5.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/682806b0-2ac6-4bbd-a4de-5356295db4f1.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/6414424c-40ca-4b4f-8b82-47ac45e245e9.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/78599291-ebbc-482a-9602-3e1376dc55e4.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/ae58fe29-dab1-4aa8-b8ec-3e67af35abb0.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/b4ce897f-bc5f-4aa3-8700-8817aa9d4397.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/b4102424-fd8c-4651-b5fa-57075025fc58.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Best Fashion Styles (1).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/black dress_.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/BOTTOMS.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Classy Old Money Outfit - 2.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/d4cbd4e1-83c0-4389-9db7-1b163657ca27.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/d7923b44-d6e3-463e-a1fa-70a35995ce18.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/DericaNicole's Amazon Page.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/download (1).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/download (2).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/download (3).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/download (5).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/download (10).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/download (11).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/e3d6972b-d445-4174-955d-2cd45ff4ea70.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/e4f97d94-5a61-49d5-9331-5a19172ba445.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Faux Leather Tie Front Crossed Button Jacket.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/fec55a8c-e083-4350-a5c8-89fac6ec1079.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Female Old Money Winter Fashion_ 20+ Pieces Woman Needs 12.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Hilary banks aesthetic.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/How to Achieve the Quiet Luxury Look on a Budget em 2024 _ Looks elegantes, Moda, Looks estilosos.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Inspired Elegant Outfit.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Liopard dress _ Dark Feminine Energy_ Bold & Elegant Fashion for a Mysterious, Confident Look.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Marisol Off Shoulder Boucle Maxi Dress - Ivory.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/old money aesthetic outfit ideas.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Old Money Aesthetic_ How To Dress Like The Rich On A Budget.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/outfit inspo (1).jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/𝓹𝓲𝓷_ 𝓮𝓵𝓬𝓱𝓸𝓬𝓸𝓵𝓪𝓽𝓮𝓰𝓲𝓻𝓵 🤎.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Sofia Richie's Off-The-Shoulder Suiting Proves Workwear Can Be Sexy.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/styleinspo black women lifestyle hypergamy spoiled….jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Winter outfit idea.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/Work outfit inspo.jpeg" alt="Women"></div>
+        <div class="pin"><img src="images/womenog/𐙚 𝒫𝒾𝓃𝓉ℯ𝓇ℯ𝓈𝓉 @𝓉𝓇𝒾𝓃𝒾𝒸𝒾𝒶𝓍𝓂𝒶𝓇𝒾ℯ 𐙚.jpeg" alt="Women"></div>
     </main>
+
     <script>
         function toggleAccordion() {
             var content = document.getElementById("accordionContent");
