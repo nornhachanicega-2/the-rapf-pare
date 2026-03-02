@@ -3,8 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessories</title>
-    <link rel="stylesheet" type="text/css" href="css/demurestyle.css">
+    <title>Demure</title>
+    <style>
+        /* ========== BASE & RESET ========== */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(26, 11, 75);
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* ========== TOP BAR ========== */
+        .top-bar {
+            background-color: #E6A8D7;
+            width: 100%;
+            color: rgb(14, 45, 109);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            padding: 10px 0;
+        }
+        .top-bar a {
+            color: #f9ff50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .top-bar p {
+            color: rgb(26, 11, 75);
+            margin: 0;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 120px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;          /* was 200px – fixed */
+            font-weight: 700;
+            color: #E6A8D7;
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(26, 11, 75);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #E6A8D7;
+            font-size: 1.2rem;
+        }
+        nav ul li a:hover {
+            color: #00ffee;
+        }
+
+        /* ========== ACCORDION (MOBILE) ========== */
+        #accordion {
+            display: none;
+        }
+        .accordion-button {
+            width: 100%;
+            background-color: rgb(26, 11, 75);
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        .accordion-content {
+            display: none;
+            background-color: rgb(26, 11, 75);
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .accordion-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .accordion-content li a {
+            text-decoration: none;
+            color: #E6A8D7;
+            display: block;
+            padding: 5px 0;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+        .pin {
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        .pin img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .pin img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ========== MEDIA QUERIES ========== */
+        @media (max-width: 1024px) {
+            #accordion {
+                display: none;
+            }
+        }
+
+        @media (max-width: 920px) {
+            nav ul {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-bar {
+                width: 80%;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+            .nav {
+                display: none;
+                flex-direction: row;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1a0a41;
+                text-align: center;
+                padding: 10px 0;
+                flex-wrap: wrap;
+            }
+            .nav a {
+                display: block;
+                padding: 10px;
+            }
+            .top-bar {
+                font-size: 14px;
+                padding: 8px;
+                text-align: center;
+                flex-wrap: wrap;
+            }
+            .image-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            nav ul {
+                flex-direction: row;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            .logo {
+                text-align: center;
+                margin-bottom: 10px;
+                padding-right: 0;
+                font-size: 24px;
+            }
+            .logo img {
+                max-width: 120px;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #accordion {
+                display: flex;
+                flex-direction: column;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar {
+                font-size: 14px;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text p {
+                font-size: 18px;
+            }
+            .image-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            #accordion {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -25,7 +266,9 @@
             </ul>
         </nav>
         <div id="accordion">
-            <button class="accordion-button" onclick="toggleAccordion()"><img src='images/list-ul-alt-svgrepo-com.svg' width=50px"></button>
+            <button class="accordion-button" onclick="toggleAccordion()">
+                <img src='images/list-ul-alt-svgrepo-com.svg' width="50px" alt="menu">
+            </button>
             <div class="accordion-content" id="accordionContent">
                 <ul>
                     <li><a href="menindex.html">MEN</a></li>
@@ -36,7 +279,6 @@
                 </ul>
             </div>
         </div>
-
     </header>    
     
     <main class="gallery">
@@ -62,6 +304,7 @@
         <div class="pin"><img src="images/aes winter/download (7).jpeg" alt="Pin 1"></div>
         <div class="pin"><img src="images/aes winter/Women Dresses _ Women Dress _ Women Fashion _ Women Fashion look _ Dresses For Women _Dresses.jpeg" alt="Pin 1"></div>
     </main>  
+
     <script>
         function toggleAccordion() {
             var content = document.getElementById("accordionContent");
@@ -72,7 +315,5 @@
             }
         }
     </script>
-  
-    
 </body>
 </html>
